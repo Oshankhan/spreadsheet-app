@@ -14,7 +14,7 @@ const SearchBar = () => {
     <div className=" flex items-center justify-evenly bg-gray-600 w-full">
       <div className="flex items-center justify-evenly ">
         <FcDataSheet className="h-6 w-6" />
-        <p className="text-gray-100 text-lg font-medium ml-8"> Book</p>
+        <p className="text-gray-100 text-lg font-medium ml-8"> Books</p>
       </div>
 
       <input
