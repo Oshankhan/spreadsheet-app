@@ -1,5 +1,5 @@
 // store.js
-import create from "zustand";
+import { create } from "zustand";
 
 export const useStore = create((set) => ({
   searchQuery: "",
@@ -8,7 +8,10 @@ export const useStore = create((set) => ({
     alignment: "left",
     fontSize: "medium",
     validation: null,
-  }), // Adding validation field
+  }),
+  currentPage: 1,
+  pageSize: 100,
+
   updateCell: (index, value) =>
     set((state) => {
       const newCells = [...state.cells];
@@ -21,5 +24,12 @@ export const useStore = create((set) => ({
       newCells[index] = { ...newCells[index], validation };
       return { cells: newCells };
     }),
+  setFormat: (index, style, typeOfStyle) =>
+    set((state) => {
+      const newCells = [...state.cells];
+      newCells[index] = { ...newCells[index], [style]: typeOfStyle };
+      return { cells: newCells };
+    }),
   setSearchQuery: (query) => set({ searchQuery: query }),
+  setPage: (page) => set({ currentPage: page }),
 }));

@@ -1,19 +1,36 @@
-// components/Toolbar.js
 "use client";
 import React from "react";
+import { useStore } from "../store/store";
 
 const Toolbar = ({ selectedCell, applyValidation }) => {
+  const setFormat = useStore((state) => state.setFormat);
+
   return (
     <div className="flex space-x-2 mb-4">
       <button onClick={() => applyValidation("number")}>Numeric Only</button>
       <button onClick={() => applyValidation(null)}>No Validation</button>
-      {/* Existing alignment and font size buttons */}
-      <button onClick={() => applyValidation("left")}>Align Left</button>
-      <button onClick={() => applyValidation("center")}>Align Center</button>
-      <button onClick={() => applyValidation("right")}>Align Right</button>
-      <button onClick={() => applyValidation("small")}>Small Font</button>
-      <button onClick={() => applyValidation("medium")}>Medium Font</button>
-      <button onClick={() => applyValidation("large")}>Large Font</button>
+
+      {/* Alignment buttons */}
+      <button onClick={() => setFormat(selectedCell, "alignment", "left")}>
+        Align Left
+      </button>
+      <button onClick={() => setFormat(selectedCell, "alignment", "center")}>
+        Align Center
+      </button>
+      <button onClick={() => setFormat(selectedCell, "alignment", "right")}>
+        Align Right
+      </button>
+
+      {/* Font size buttons */}
+      <button onClick={() => setFormat(selectedCell, "fontSize", "small")}>
+        Small Font
+      </button>
+      <button onClick={() => setFormat(selectedCell, "fontSize", "medium")}>
+        Medium Font
+      </button>
+      <button onClick={() => setFormat(selectedCell, "fontSize", "large")}>
+        Large Font
+      </button>
     </div>
   );
 };
