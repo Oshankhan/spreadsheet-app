@@ -60,37 +60,40 @@ const Grid = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <Toolbar selectedCell={selectedCell} applyValidation={applyValidation} />
 
-      <div className="grid grid-cols-10 gap-1">
+      <div className="grid grid-cols-10 gap-1 m-2">
         {filteredCells
           .slice((currentPage - 1) * 100, currentPage * 100)
 
-          .map((cell, index) => (
-            <input
-              key={index}
-              type="text"
-              value={cell.value}
-              onClick={() => handleCellClick(index + (currentPage - 1) * 100)}
-              onChange={(e) =>
-                handleCellChange(
-                  index + (currentPage - 1) * 100,
-                  e.target.value
-                )
-              }
-              className={`border p-2 text-${cell.alignment} ${
-                cell.fontSize === "small"
-                  ? "text-sm"
-                  : cell.fontSize === "large"
-                  ? "text-lg"
-                  : "text-base"
-              }`}
-            />
-          ))}
+          .map((cell, index) => {
+            return (
+              <input
+                key={index}
+                type="text"
+                value={cell.value}
+                onClick={() => handleCellClick(index + (currentPage - 1) * 100)}
+                onChange={(e) =>
+                  handleCellChange(
+                    index + (currentPage - 1) * 100,
+                    e.target.value
+                  )
+                }
+                className={`border p-2 w-full text-${cell.alignment} ${
+                  cell.fontSize === "small"
+                    ? "text-sm"
+                    : cell.fontSize === "large"
+                    ? "text-lg"
+                    : "text-base"
+                }`}
+                style={{ textAlign: cell.alignment }}
+              />
+            );
+          })}
       </div>
       <Pagiantion
-        selectedCell={selectedCell}
+        selectedCell={currentPage}
         ChangePageIndex={ChangePageIndex}
       />
     </div>

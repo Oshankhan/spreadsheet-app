@@ -4,7 +4,7 @@ import SearchBar from "./component/SearchBar";
 
 const page = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center bg-green-50">
       <SearchBar />
       <Grid />
     </div>
