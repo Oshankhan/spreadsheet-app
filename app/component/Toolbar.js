@@ -14,8 +14,6 @@ const Toolbar = ({ selectedCell, applyValidation }) => {
   const history = useStore((state) => state.history);
   const future = useStore((state) => state.future);
 
-  console.log(future);
-
   return (
     <div className="flex w-[80%] h-8 my-2 justify-evenly rounded-md  bg-white">
       <button onClick={undo} disabled={history.length === 0}>
